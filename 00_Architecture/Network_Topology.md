@@ -1,16 +1,19 @@
-[]()
+
 ## Description And Project History
 
 This project was developed with strong purpose and focus to learn Cybersecurity, IAM and network mechanisms in practice. The main objective was to create safe and isolated home subnet run fully virtually using dedicated unit equipped with Proxmox bare-metal hypervisor.
 
-		[!ABSTRACT] Project objective was to create safe, monitored                infrastructure based on Active Directory and SIEM (Wazuh)                  integration, with isolation from home network.
+> [!NOTE]
+>		Project objective was to create safe, monitored infrastructure based on Active Directory and SIEM (Wazuh) integration, with isolation from home network.
 
 ### Main Goals
 - Isolation: The Lab uses two virtual bridges (vmbr0, vmbr1). Whole outside communication is filtered by pfSense firewall.
 - Identity & Access Management: Central point of management for AD is Windows Server 2022 unit (DC-01), it is used for GPO and authorization inside the domain.
 - Monitoring & SOC: Ubuntu Server equipped with Wazuh Manager, centralized point of capturing logs from all virtual machines.
 
-		[!WARNING] The laboratory subnet include technical debt. In                production environment, there should be separate network subnet            dedicated for security monitoring purposes, although, I decided           to leave this issue because of possible Wazuh agents setup                 corruption and other significant problems.
+	
+>		[!WARNING] 
+>		The laboratory subnet include technical debt. In production environment, there should be separate network subnet dedicated for security monitoring purposes, although, I decided to leave this issue because of possible Wazuh agents setup corruption and other significant problems.
 
 ### IP Addressing
 
@@ -28,7 +31,7 @@ This project was developed with strong purpose and focus to learn Cybersecurity,
 ```mermaid
 graph TD
     %% Outside section - Remote Access and Testing
-    subgraph Outside_World [External / Home Network]
+    subgraph Outside_World [Remote /Home Network]
         direction LR
         Mac[MacBook Pro<br/>Remote Control]
         Kali[501-WAN-Kali<br/>Offensive Testing]
