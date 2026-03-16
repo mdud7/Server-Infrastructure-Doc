@@ -33,7 +33,7 @@ graph TD
     %% Outside section - Remote Access and Testing
     subgraph Outside_World [Remote /Home Network]
         direction LR
-        Mac[MacBook Pro<br/>Remote Control]
+        Mac[Endpoint Device<br/>Remote Control]
         Kali[501-WAN-Kali<br/>Offensive Testing]
     end
 
