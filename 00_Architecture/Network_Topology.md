@@ -69,10 +69,4 @@ graph TD
     WK2 -.->|Sysmon| Wazuh
     DC -.->|Sysmon| Wazuh
 
-    %% Styling
-    style Outside_World fill:#f9f9f9,stroke:#333,stroke-dasharray: 5 5
-    style pfWAN fill:#ffcccc,stroke:#cc0000
-    style pfLAN fill:#ffcccc,stroke:#cc0000
-    style Kali fill:#e1f5fe,stroke:#01579b
-    style Mac fill:#e1f5fe,stroke:#01579b
 ```
