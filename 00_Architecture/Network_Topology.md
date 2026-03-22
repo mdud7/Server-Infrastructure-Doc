@@ -1,4 +1,7 @@
 
+> [!WARNING]
+> Server network topolgy is currently being updated with full vlan segmentation. With this in mind, the IP Addressing table is not valid anymore. IP Addressing is my next step to implement. For now there is new network topology schema created at the bottom of this file although it is not fully developed yet.
+
 ## Description And Project History
 
 This project was developed with strong purpose and focus to learn Cybersecurity, IAM and network mechanisms in practice. The main objective was to create safe and isolated home subnet run fully virtually using dedicated unit equipped with Proxmox bare-metal hypervisor.
@@ -41,7 +44,7 @@ This project was developed with strong purpose and focus to learn Cybersecurity,
 | ------------ | -------------- | ------------------ | ----------------------------------------- |
 | 2001-db-host | **192.168.2.10 | Ubuntu Server 22.4 | Database Host Machine, Docker, PostgreSQL |
 
-# Network Schema
+# Network Schema (old schema)
 
 ```mermaid
 graph TD
@@ -87,4 +90,49 @@ WK2 -.->|Sysmon| Wazuh
 DC -.->|Sysmon| Wazuh
 
 Postgres -.-o|Future Automation - check concepts| DC
+```
+
+# Network Schema (new)
+```mermaid
+graph TD
+    subgraph Access_Layer [REMOTE/HOME ACCESS]
+        direction LR
+        Remote[Tailscale VPN Client]
+        Kali[Kali Linux from WAN = as home network]
+    end
+
+    Access_Layer --> pfSense
+
+    subgraph Gateway_Layer [ROUTER]
+        pfSense{pfSense Firewall/Router}
+    end
+
+    pfSense ==> V20[VLAN 20: DATABASE]
+    pfSense ==> V30[VLAN 30: IDENTITY / AD]
+    pfSense ==> V40[VLAN 40: SIEM / SOC]
+    pfSense ==> V10[VLAN 50: WORKSTATIONS]
+
+    subgraph Segment_10 [Net: 192.168.5.0/24]
+        WK1[Workstation 201]
+        WK2[Workstation 202]
+    end
+
+    subgraph Segment_20 [Net: 192.168.2.0/24]
+        Postgres[PostgreSQL DB]
+    end
+
+    subgraph Segment_30 [Net: 192.168.3.0/24]
+        DC[DC-01 Domain Controller]
+    end
+
+    subgraph Segment_40 [Net: 192.168.4.0/24]
+        Wazuh[Wazuh Manager]
+    end
+
+    V10 --- Segment_10
+    V20 --- Segment_20
+    V30 --- Segment_30
+    V40 --- Segment_40
+
+
 ```
