@@ -16,7 +16,7 @@ This project was developed with strong purpose and focus to learn Cybersecurity,
 
 	
 >[!WARNING] 
->		The laboratory subnet include technical debt. In production environment, there should be separate network subnet dedicated for security monitoring purposes, although, I decided to leave this issue because of possible Wazuh agents setup corruption and other significant problems.
+>		(currently being fixed)The laboratory subnet include technical debt. In production environment, there should be separate network subnet dedicated for security monitoring purposes, although, I decided to leave this issue because of possible Wazuh agents setup corruption and other significant problems.
 
 ### IP Addressing
 
