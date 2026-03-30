@@ -49,7 +49,7 @@ subgraph Segment_10 [Net: 192.168.5.0/24]
     WK2[Workstation 202 <br/> 192.168.5.11]
 end
 
-subgraph Segment_20 [Net: 192.168.6.0/24]
+subgraph Segment_20 [Net: 192.168.2.0/24]
     Postgres[PostgreSQL DB <br/> 192.168.2.10]
 end
 
